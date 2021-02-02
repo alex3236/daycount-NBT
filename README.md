@@ -2,6 +2,11 @@
 MCDR插件，通过读取 NBT 文件，获取服务器总运行时间。
 
 ## 使用说明
+安装前置：
+```bash
+pip install nbtlib
+pip3 install nbtlib
+```
 简单的例子：
 ```python
 from daycount import getday
