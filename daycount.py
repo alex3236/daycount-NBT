@@ -15,8 +15,12 @@ PLUGIN_METADATA = {
 
 
 def getday():
-    global nbtFile
-    return floor(nbtlib.load(nbtFile)['']['Data']['Time'] / 1728000)
+    try:
+        global nbtFile
+        return floor(nbtlib.load(nbtFile)['']['Data']['Time'] / 1728000)
+    except:
+        return 1
+        raise
 
 
 def display_days(source: CommandSource):
