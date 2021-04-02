@@ -1,5 +1,5 @@
 # daycount-NBT
-MCDR插件，通过读取 NBT 文件，获取服务器总运行时间。
+MCDR插件，获取和输出服务器开服时间。
 
 ## 使用说明
 ### 安装前置
@@ -20,17 +20,17 @@ def on_load(server, old):
 ### NBT 模式
 一般来说，你无需配置此插件，到手即用。如果您服务器的 `level.dat` 并非位于 `server/world/level.dat`，则需要手动配置。  
 用任意编辑器打开 .py 文件，修改 `nbtPath` 即可。
-'''python
+```python
 nbtFile = 'server/world/level.dat' # NBT位置
-'''
+```
 ### 日期模式
-修改硬编码，即可使用日期模式——这应该不需要解释。
-'''python
+修改硬编码，即可使用日期模式——这应该不需要解释。  
+```python
 dateMode = {
             'enable': False, # 是否启用日期模式
             'date':'2021-01-01' # 开服日期
             }
-'''
+```
 
 ## NBT 模式说明
 NBT 模式的原理是获取服务器世界运行时间，所以输出的 **并非** 开服时间，而是 **服务器总运行时长**。  
