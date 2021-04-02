@@ -5,8 +5,8 @@ from math import floor
 
 nbtFile = 'server/world/level.dat'
 dateMode = {
-            'enable': True,
-            'date':'2021-02-28'
+            'enable': False,
+            'date':'2021-01-01'
             }
 
 PLUGIN_METADATA = {
