@@ -15,8 +15,20 @@ def on_load(server, old):
 ```
 
 ## 配置插件
+### NBT 模式
 一般来说，你无需配置此插件，到手即用。如果您服务器的 `level.dat` 并非位于 `server/world/level.dat`，则需要手动配置。  
 用任意编辑器打开 .py 文件，修改 `nbtPath` 即可。
+'''python
+nbtFile = 'server/world/level.dat' # NBT位置
+'''
+### 日期模式
+修改硬编码，即可使用日期模式——这应该不需要解释。
+'''python
+dateMode = {
+            'enable': False, # 是否启用日期模式
+            'date':'2021-01-01' # 开服日期
+            }
+'''
 
 ## 重要说明
 由于此插件原理是获取服务器世界时间，所以输出的 **并非** 开服时间，而是 **服务器总运行时长**。  
