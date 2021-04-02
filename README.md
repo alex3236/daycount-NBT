@@ -43,8 +43,8 @@ NBT 模式的原理是获取服务器世界运行时间，所以输出的 **并�
 ~~NBT模式下，服务器开服第一次 auto-save 前调用会报错~~
 
 ## 吐槽
-点名批评友商[DaycountR](https://github.com/Van-Nya/DayCountR)。  
-作为一个“R”，将原本[daycount](https://github.com/TISUnion/daycount)的指令、代码逻辑完全打乱。  
+点名批评友商 [DaycountR](https://github.com/Van-Nya/DayCountR)。  
+作为一个“R”，将原本 [daycount](https://github.com/TISUnion/daycount) 的指令、代码逻辑完全打乱。  
 莫名其妙将简单的功能写了 49 行（去除所有注释等），而我的插件加上无效行也才 46 行。
 DaycountR 还使用了配置文件（只是实现日期加减，配置文件又何必要？就算强迫症，为何代码有 48 行之多？）  
 作为一个简单的开服时间插件，坚守本分才是王道。
