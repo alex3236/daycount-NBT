@@ -1,4 +1,3 @@
-import nbtlib
 from mcdreforged.api.all import *
 from datetime import datetime
 from math import floor
@@ -23,7 +22,9 @@ def getday():
         global nbtFile, dateMode
         if dateMode['enable']:
             return (datetime.now() - datetime.strptime(dateMode['date'], '%Y-%m-%d')).days
-        return floor(nbtlib.load(nbtFile)['']['Data']['Time'] / 1728000)
+        else:
+            import nbtlib
+            return floor(nbtlib.load(nbtFile)['']['Data']['Time'] / 1728000)
     except:
         return 0
         raise
