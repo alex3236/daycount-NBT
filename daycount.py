@@ -1,30 +1,36 @@
 import nbtlib
 from mcdreforged.api.all import *
+from datetime import datetime
 from math import floor
 
 nbtFile = 'server/world/level.dat'
+dateMode = {
+            'enable': True,
+            'date':'2021-02-28'
+            }
 
 PLUGIN_METADATA = {
     'id': 'daycount_nbt',
-    'version': '1.0',
+    'version': '3.0',
     'name': 'DayCount-NBT',
     'description': '通过读取 NBT 文件，获取服务器总运行时间。',
     'author': 'Alex3236',
     'link': 'https://github.com/eagle3236'
 }
 
-
 def getday():
     try:
-        global nbtFile
+        global nbtFile, dateMode
+        if dateMode['enable']:
+            return (datetime.now() - datetime.strptime(dateMode['date'], '%Y-%m-%d')).days
         return floor(nbtlib.load(nbtFile)['']['Data']['Time'] / 1728000)
     except:
-        return 1
+        return 0
         raise
 
 
 def display_days(source: CommandSource):
-    source.reply(f'服务器已运行 {getday()} 天')
+    source.reply(f'PTC 的有效运行时间是 {getday()} 天')
 
 
 def on_info(server, info: Info):
