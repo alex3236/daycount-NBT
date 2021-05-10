@@ -12,14 +12,16 @@ pip install nbtlib
 `!!day`：查看服务器开服天数。
 
 ### API
-如果你不是开发者，则无需了解这部分内容。
+如果你不是开发者，则无需了解这部分内容。  
 简单的例子：
 ```python
-from daycount import getday
+import daycount
 def on_load(server, old):
-  server.logger.info(getday())
+  server.logger.info(daycount.getday())
+  server.logger.info(daycount.get_day_text())
 ```
-`getday()` 将返回一个整数，代表服务器开服天数。
+`getday()`：返回一个整数，代表服务器开服天数。  
+`get_day_text()`：返回此时使用 !!day 命令时输出的内容。
 
 ## 配置插件
 ### NBT 模式
@@ -39,6 +41,12 @@ nbt_file = 'server/world/level.dat' # NBT文件位置
 ```python
 nbt_file = -1
 start_date = '2020-01-01'
+```
+
+### 自定义文字
+自定义 `!!day` 命令输出的字符串。用 `$day` 代表开服天数。
+```python
+day_text = '这是服务器开服的第 $day 天'
 ```
 
 ## 已知问题
