@@ -21,7 +21,7 @@ def on_load(server, old):
   server.logger.info(daycount.get_day_text())
 ```
 `getday()`：返回一个整数，代表服务器开服天数。  
-`get_day_text()`：返回此时使用 !!day 命令时输出的内容。
+`get_day_text()`：返回根据配置 !!day 命令应输出的内容。
 
 ## 配置插件
 ### NBT 模式
@@ -37,25 +37,18 @@ nbt_file = 'server/world/level.dat' # NBT文件位置
 
 ### 日期模式
 修改硬编码关闭 NBT 模式并设置日期，即可使用日期模式。  
-日期格式应为 `%Y-%m-%d`。
-```python
-nbt_file = -1
-start_date = '2020-01-01'
-```
+日期格式应为 `%Y-%m-%d`。y 天'
 
 ### 自定义文字
 自定义 `!!day` 命令输出的字符串。用 `$day` 代表开服天数。
-```python
-day_text = '这是服务器开服的第 $day 天'
-```
 
 ## 已知问题
 目前所有已知问题已修复。欢迎找茬~  
-~~NBT模式下，服务器开服第一次 auto-save 前调用会报错~~
+- [x] ~~NBT模式下，服务器开服第一次 auto-save 前调用会报错~~
 
-## 吐槽
+~~## 吐槽
 点名批评友商 [DaycountR](https://github.com/Van-Nya/DayCountR)。  
 作为一个“R”，将原本 [daycount](https://github.com/TISUnion/daycount) 的指令、代码逻辑完全打乱。  
 莫名其妙将简单的功能写了六七十行，而我这个功能相差不大的插件才三十几行。
 DaycountR 还使用了配置文件（只是实现日期加减，配置文件又何必要？就算强迫症，为何代码有六七十行之多？）  
-作为一个简单的开服时间插件，坚守本分才是王道。
+作为一个简单的开服时间插件，坚守本分才是王道。~~
