@@ -3,14 +3,15 @@ from datetime import datetime
 from math import floor
 
 # -----------------------------------------
-nbt_file = 'server/world/level.dat' # NBT 文件位置，设置为 -1 以使用日期模式
+nbt_mode = True # 是否使用 NBT 模式
+nbt_file = 'server/world/level.dat' # NBT 文件位置
 start_date = '2021-01-01' # 开服日期
 day_text = '这是服务器开服的第 $day 天' # 显示文字
 # -----------------------------------------
 
 PLUGIN_METADATA = {
     'id': 'daycount_nbt',
-    'version': '4.1',
+    'version': '1.2.0',
     'name': 'DayCount-NBT',
     'description': '通过读取 NBT 文件，获取服务器总运行时间。',
     'author': 'Alex3236',
