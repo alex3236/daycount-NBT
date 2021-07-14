@@ -1,5 +1,6 @@
 from mcdreforged.api.all import *
 from datetime import datetime
+from traceback import print_exc
 from math import floor
 
 # -----------------------------------------
@@ -11,7 +12,7 @@ day_text = '这是服务器开服的第 $day 天' # 显示文字
 
 PLUGIN_METADATA = {
     'id': 'daycount_nbt',
-    'version': '1.2.0',
+    'version': '1.2.1',
     'name': 'DayCount-NBT',
     'description': '通过读取 NBT 文件，获取服务器总运行时间。',
     'author': 'Alex3236',
@@ -20,12 +21,13 @@ PLUGIN_METADATA = {
  
 def getday():
     try:
-        if isinstance(nbt_file, str):
+        if nbt_mode:
             import nbtlib
             return floor(nbtlib.load(nbt_file)['']['Data']['Time'] / 1728000)
         return (datetime.now() - datetime.strptime(start_date, '%Y-%m-%d')).days
     except Exception:
-        return 0
+        print_exc()
+        return -1
 
 def get_day_text():
     return day_text.replace('$day', str(getday()))
