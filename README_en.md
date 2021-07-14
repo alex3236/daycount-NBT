@@ -35,8 +35,4 @@ Of course, this problem can be avoided by using the date mode.
 
 ### Date mode
 Modify the hardcoding to turn off NBT mode and set the date to use date mode.  
-The date format should be `%Y-%m-%d`.
-```python
-nbt_file = -1
-start_date = '2020-01-01'
-```
+The date format should be `%Y-%m-%d`.'
