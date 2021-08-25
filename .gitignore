@@ -1,0 +1,6 @@
+.venv
+.vscode
+config
+dist
+build*
+*.zip

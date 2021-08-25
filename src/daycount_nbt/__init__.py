@@ -3,13 +3,6 @@ from datetime import datetime
 from traceback import print_exc
 from math import floor
 
-# -----------------------------------------
-nbt_mode = True # 是否使用 NBT 模式
-nbt_file = 'server/world/level.dat' # NBT 文件位置
-start_date = '2021-01-01' # 开服日期
-day_text = '这是服务器开服的第 $day 天' # 显示文字
-# -----------------------------------------
-
 PLUGIN_METADATA = {
     'id': 'daycount_nbt',
     'version': '1.2.1',
@@ -18,23 +11,33 @@ PLUGIN_METADATA = {
     'author': 'Alex3236',
     'link': 'https://github.com/eagle3236'
 }
+
+class Configure(Serializable):
+    nbt_mode: bool = True
+    nbt_file: str = 'server/world/level.dat'
+    start_date: str = '2021-01-01'
+    dat_text: str = '这是服务器开服的第 $day 天'
+
+config: Configure
  
 def getday():
     try:
-        if nbt_mode:
+        if config.nbt_mode:
             import nbtlib
-            return floor(nbtlib.load(nbt_file)['']['Data']['Time'] / 1728000)
-        return (datetime.now() - datetime.strptime(start_date, '%Y-%m-%d')).days
+            return floor(nbtlib.load(config.nbt_file)['']['Data']['Time'] / 1728000)
+        return (datetime.now() - datetime.strptime(config.start_date, '%Y-%m-%d')).days
     except Exception:
         print_exc()
         return -1
 
 def get_day_text():
-    return day_text.replace('$day', str(getday()))
+    return config.day_text.replace('$day', str(getday()))
 
 def display_days(source: CommandSource):
     source.reply(get_day_text())
 
-def on_load(server: ServerInterface, old):
+def on_load(server: PluginServerInterface, old):
+    global config
+    config = server.load_config_simple('daycountNBT.json', target_class=Configure, in_data_folder=False)
     server.register_command(Literal('!!day').runs(display_days))
     server.register_help_message('!!day', '查看服务器运行天数')

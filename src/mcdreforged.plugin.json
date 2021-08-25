@@ -1,0 +1,14 @@
+{
+    "id": "daycount_nbt",
+    "version": "2.0.0",
+    "name": "joinMOTD++",
+    "description": {
+        "en_us": "Get and export server opening times.",
+        "zh_cn": "获取和输出服务器开服时间。"
+    },
+    "dependencies": {
+        "mcdreforged": ">=2.0.1"
+    },
+    "author": "Alex3236",
+    "link": "https://github.com/eagle3236/joinMOTD_Plus"
+}
