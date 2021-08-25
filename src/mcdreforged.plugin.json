@@ -1,7 +1,7 @@
 {
     "id": "daycount_nbt",
     "version": "2.0.0",
-    "name": "joinMOTD++",
+    "name": "DayCount NBT",
     "description": {
         "en_us": "Get and export server opening times.",
         "zh_cn": "获取和输出服务器开服时间。"
