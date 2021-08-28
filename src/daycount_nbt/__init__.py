@@ -3,15 +3,6 @@ from datetime import datetime
 from traceback import print_exc
 from math import floor
 
-PLUGIN_METADATA = {
-    'id': 'daycount_nbt',
-    'version': '1.2.1',
-    'name': 'DayCount-NBT',
-    'description': '通过读取 NBT 文件，获取服务器总运行时间。',
-    'author': 'Alex3236',
-    'link': 'https://github.com/eagle3236'
-}
-
 class Configure(Serializable):
     nbt_mode: bool = True
     nbt_file: str = 'server/world/level.dat'
