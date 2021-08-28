@@ -16,7 +16,7 @@ class Configure(Serializable):
     nbt_mode: bool = True
     nbt_file: str = 'server/world/level.dat'
     start_date: str = '2021-01-01'
-    dat_text: str = '这是服务器开服的第 $day 天'
+    day_text: str = '这是服务器开服的第 $day 天'
 
 config: Configure
  
