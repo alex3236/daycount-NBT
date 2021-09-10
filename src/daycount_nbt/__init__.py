@@ -29,6 +29,6 @@ def display_days(source: CommandSource):
 
 def on_load(server: PluginServerInterface, old):
     global config
-    config = server.load_config_simple('daycountNBT.json', target_class=Configure, in_data_folder=False)
+    config = server.load_config_simple(target_class=Configure)
     server.register_command(Literal('!!day').runs(display_days))
     server.register_help_message('!!day', '查看服务器运行天数')

@@ -1,6 +1,6 @@
 {
     "id": "daycount_nbt",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "name": "DayCount NBT",
     "description": {
         "en_us": "Get and export server opening times.",
