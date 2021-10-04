@@ -3,8 +3,8 @@
     "version": "2.1.0",
     "name": "DayCount NBT",
     "description": {
-        "en_us": "Get and export server opening times.",
-        "zh_cn": "获取和输出服务器开服时间。"
+        "en_us": ":calendar: Get and export server opening times.",
+        "zh_cn": ":calendar: 获取和输出服务器开服时间。"
     },
     "dependencies": {
         "mcdreforged": ">=2.2.0"
