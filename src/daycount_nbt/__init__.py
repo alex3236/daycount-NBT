@@ -15,7 +15,7 @@ def getday():
     try:
         if config.nbt_mode:
             import nbtlib
-            return floor(nbtlib.load(config.nbt_file)['']['Data']['Time'] / 1728000)
+            return floor(nbtlib.load(config.nbt_file)['Data']['Time'] / 1728000)
         return (datetime.now() - datetime.strptime(config.start_date, '%Y-%m-%d')).days
     except Exception:
         print_exc()

@@ -1,1 +1,1 @@
-nbtlib
+nbtlib>=2.0.0
