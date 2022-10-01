@@ -36,7 +36,7 @@ jobs:
           [[ -f requirements.txt ]] && pip install -r requirements.txt || echo No requirements needed
 
       - name: Pack plugin
-        run: python -m mcdreforged pack -o dist
+        run: python -m mcdreforged pack -i src -o dist
 
       - name: Find tag name
         id: release_info
