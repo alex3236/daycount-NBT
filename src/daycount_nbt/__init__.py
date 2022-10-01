@@ -2,8 +2,9 @@ from mcdreforged.api.all import *
 from datetime import datetime
 from traceback import print_exc
 from typing import List
-import nbtlib
+import importlib
 
+nbtlib = None
 
 class Configure(Serializable):
     commands: List[str] = ['!!day', '!!days']
@@ -21,10 +22,13 @@ def getday() -> int:
     Returns:
         `int`: Integer number of days, or `-1` if an error occurs
     """
+    global nbtlib
     try:
         if config.nbt_mode:
+            if nbtlib == None:
+                nbtlib = importlib.import_module("nbtlib")
             return int(nbtlib.load(config.nbt_file)['Data']['Time'] / 1728000)
-        return (datetime.now() - datetime.strptime(config.start_date, '%Y-%m-%d')).days
+        return (datetime.now() - datetime.strptime(config.start_date, r'%Y-%m-%d')).days
     except:
         print_exc()
         return -1

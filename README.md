@@ -8,7 +8,6 @@ MCDR插件，获取和输出服务器开服时间。
 
 ```python
 mcdreforged>=2.2.0
-nbtlib>=2.0.0
 ```
 
 ## 📝 使用说明
@@ -25,7 +24,13 @@ nbtlib>=2.0.0
 如你所见，在输出字符串中，请用 `{day}` 代表开服天数，使用 `{{` 和 `}}` 来描述单个 `{` 和 `}`。
 ### 📡 NBT 模式
 
-daycount-NBT 默认即 NBT 模式，且一般无需进行任何配置，到手即用。
+使用 NBT 模式需要额外安装以下前置模块：
+
+```python
+nbtlib>=2.0.0
+```
+
+daycount-NBT 默认即 NBT 模式，一般无需进行任何配置，到手即用。
 
 如果您服务器的 `level.dat` 并非位于 `server/world/level.dat`，则需配置文件中的 `nbt_file`。
 

@@ -1,0 +1,34 @@
+name: Dev packages
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Install dependencies
+        working-directory: ./src
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install mcdreforged
+          [[ -f requirements.txt ]] && pip install -r requirements.txt
+      - name: Pack the plugin
+        run: python -m mcdreforged pack -i src -o dist
+      - uses: actions/upload-artifact@v2
+        with:
+          name: pack-artifacts
+          path: dist/

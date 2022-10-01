@@ -1,0 +1,65 @@
+name: Release
+
+on:
+  release:
+    types:
+      - published
+  workflow_dispatch:
+    inputs:
+      target_release_tag:
+        description: The tag of the release you want to append the artifact to
+        required: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        working-directory: ./src
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install mcdreforged
+          [[ -f requirements.txt ]] && pip install -r requirements.txt
+
+      - name: Pack plugin
+        run: python -m mcdreforged pack -o dist
+
+      - name: Find tag name
+        id: release_info
+        run: |
+          if [ $GITHUB_EVENT_NAME == 'release' ]
+          then
+            echo "::set-output name=tag_name::"  # leave an empty value here so softprops/action-gh-release will use the default value
+          elif [ $GITHUB_EVENT_NAME == 'workflow_dispatch' ]
+          then
+            echo "::set-output name=tag_name::${{ github.event.inputs.target_release_tag }}"
+          else
+            echo Unknown github event name $GITHUB_EVENT_NAME
+            exit 1
+          fi
+
+      - name: Find packed plugin
+        id: findplugin
+        run: |
+          output="$(ls dist)"
+          echo "::set-output name=pluginname::$output"
+
+      - name: Upload to Github Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/${{ steps.findplugin.outputs.pluginname }}
+          tag_name: ${{ steps.release_info.outputs.tag_name }}
