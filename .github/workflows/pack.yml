@@ -25,7 +25,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install mcdreforged
-          [[ -f requirements.txt ]] && pip install -r requirements.txt
+          [[ -f requirements.txt ]] && pip install -r requirements.txt || echo No requirements needed
       - name: Pack the plugin
         run: python -m mcdreforged pack -i src -o dist
       - uses: actions/upload-artifact@v2
